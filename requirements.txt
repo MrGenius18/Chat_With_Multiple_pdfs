@@ -2,7 +2,9 @@ streamlit
 google-generativeai
 python-dotenv
 langchain
-PyPDF2
+# PyPDF2
+pdfplumber
 faiss-cpu
 langchain_google_genai
 langchain-community
+rank_bm25

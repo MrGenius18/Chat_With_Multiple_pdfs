@@ -21,17 +21,33 @@ def get_conversational_chain():
 
     return chain
 
+
+# chatbot forgets previous messages so Store chat history in st.session_state
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+
 def user_input(user_question):
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-
     new_db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
-    docs = new_db.similarity_search(user_question)
-
-    chain = get_conversational_chain()
     
+    docs = new_db.similarity_search(user_question)
+    
+    chain = get_conversational_chain()
     response = chain(
         {"input_documents":docs, "question":user_question},
         return_only_outputs=True)
     
-    # print(response)
-    st.write("Reply: ", response["output_text"])
+    st.write("### 🤖 Reply:")
+    st.write(response["output_text"])
+
+    # bot remembers past questions!
+    response_text = response["output_text"]
+
+    # Store conversation history
+    st.session_state.chat_history.insert(0, {"question": user_question, "answer": response_text})
+
+    # Display full chat history
+    st.success("### Chat History")
+    for chat in st.session_state.chat_history:
+        st.write(f"👤 **You:** {chat['question']}")
+        st.write(f"🤖 **Bot:** {chat['answer']}")
