@@ -57,7 +57,7 @@ This project provides an intuitive interface to interact with multiple PDF docum
 
 <h2 align="left">✨ Demo</h2>
 
-![Chat wwith Multi PDFs UI Demo Screenshot](https://github.com/MrGenius18/Chat_With_Multiple_pdfs/blob/800821a6f7d91a88cfdc88e8536ebe2e50758b9b/Demo.png)
+![Chat with Multi PDFs UI Demo Screenshot](https://github.com/MrGenius18/Chat_With_Multiple_pdfs/blob/800821a6f7d91a88cfdc88e8536ebe2e50758b9b/Demo.png)
 
 <h2 align="left">⭐ Acknowledgments</h2>
 
